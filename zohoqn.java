@@ -230,14 +230,24 @@ class largestfour{
 
 //13. find the roots of a quadratic equations
 
-/*class quadratic{
+class quadratic{
     public static void main(String[] args)
     {
-        Scanner scan = new scanner(System.in);
-
+        Scanner scan = new Scanner(System.in);
+        int a =scan.nextInt();
+        int b =scan.nextInt();
+        int c = scan.nextInt();
+        double withinroot = b * b - 4 *a*c;
+        System.out.println("withinroot = " + withinroot);
+        if(withinroot > 0)
+        {
+            double r1 = (-b + Math.sqrt(withinroot))/(2*a);
+            double r2 = (-b - Math.sqrt(withinroot)) / (2*a);
+            System.out.println("r1 = " + r1);
+            System.out.println("r2 =" + r2);
+        }
     }
-}*/
-
+}
 
 //14.check whether is number positive or negative
 
@@ -455,38 +465,32 @@ class Merged{
 class rotate{
     public static void main(String[] args)
     {
-        int[][] arr = {
-            {1,2,3,4},
-            {5,6,7,8},
-            {9,10,11,12}
-        };
-        
-        System.out.println("Original matrix :");
 
-        for(int i=0;i<arr.length;i++)
+        int[][] arr ={
+                     {1,3,4},
+                     {4,5,6},
+                      };
+        int rows = arr.length;
+        int cols = arr[0] .length;
+        int[][] rotate = new int[cols][rows];
+        for(int i=0;i<rows;i++)
         {
-            int col = arr[i].length;
-            int last = arr[i][col-1];
-
-            for(int j= col-1;j>0;j--)
+            for(int j=0;j<cols;j++)
             {
-                arr[i][j] = arr[i][j-1];
-            arr[i][0] = last;
-            
-            }        
-    }
-
-    System.out.println("mstrix sfter right rotations :");
-            for(int i=0;i<arr.length;i++)
-            {
-                for(int j=0;j<arr[i] .length;j++)
-                {
-                    System.out.print(arr[i][j] + " ");
-                }
-                System.out.println();
+               rotate [j][rows-i-1] = arr[i][j];
             }
-         }
-    }
+        }
+        System.out.println("rotated matrix :");
+        for(int i=0;i<cols;i++)
+        {
+            for(int j=0;j<rows;j++)
+        {
+            System.out.print(rotate[i][j] + " ");
+        }
+        System.out.println();
+        }
+}   
+}             
 
 //28. Alternate sorting ,rearrange the array in such a way that the first element is first minimum and the second element is first maximum
 
@@ -717,6 +721,40 @@ class ReverseArray {
 
 
 //38 . java program to print the delete an elements of ana array
+class delete{
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+      
+        System.out.println("enter the size of the array : ");
+        int size = scan.nextInt();
+        int[] arr = new int[size];
+        System.out.println("enter the " + size + "array");
+        for(int  i =0;i<size;i++)
+        {
+            arr[i] = scan.nextInt();
+        }
+
+        System.out.println("select the delete element");
+         int deleteele = scan.nextInt();
+         boolean found = false;
+
+         System.out.println("after deleted elements : " + deleteele);
+          for(int i=0;i<arr.length;i++)
+          {
+            if(!found && arr[i] == deleteele)
+            {
+                found = true;
+                continue;
+            }
+              System.out.print(arr[i]+ " ");
+          }
+          if(!found)
+          {
+            System.out.println("not found");
+          }
+    }     
+}
+
 
 
 //39 print the avgerage of all items of the array
@@ -753,24 +791,710 @@ class inversearray{
 }
 
 
+//41.pyramid pattern 
+ 
 class pat{
+
     public static void main(String[] args)
     {
         int rows = 10;
         for(int i=1;i<rows;i++)
         {
-            for(int spa =0;spa<rows-i;spa++)
+            for(int j=1;j<rows;j++)
             {
-                System.out.print(" ");
-            }
-                for(int j=1;j<=i;j++)
+                if(j < rows-i)
                 {
-                    System.out.print(i+ " ");
+                    System.out.print(" ");
                 }
-                System.out.println();
-            }   
+                else{
+                    System.out.print(i + " ");
+                }
+            }    
+            System.out.println();
+        }   
+      
+    }
+}  
+
+//42 pyramid pattern 2
+
+class pyramid2{
+    public static void main(String[] args) {
+        int rows =10;
+        for(int i =1;i<rows;i++)
+        { 
+            int num =1;
+            for(int j =1;j<=rows +i-1;j++)
+            {
+                if(j < rows-i)
+                {
+                    System.out.print(" ");
+                }
+                else if( j % 2 == 1)
+                {
+                    System.out.print(num);
+                    num++;
+                }
+                else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+         }
+     }
+}
+
+//43 pyramid 3
+
+class pyramid3{
+    public static void main(String[] args)
+    {
+        int rows = 10;
+        for(int i =1;i<rows;i++)
+        {
+            for(int j =1;j<rows;j++)
+            {
+                if(j < rows-i)
+                {
+                    System.out.print( " ");
+                }
+                else{
+                    System.out.print("*"+" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+//44. write a program to print the following pattern based on the alpgabet
+
+class  alphabetpattern{
+    public static void main(String[] args) {
+   
+    int n = 5; 
+        for (int i = 1; i <= 2 * n - 1; i++) {
+            int totalCols = (i <= n) ? i : (2 * n - i);
+            char ch = (char) ('A' + totalCols - 1);
+            for (int j = 1; j <= n; j++) {
+                if (j <= n - totalCols) {
+                    System.out.print(" ");
+                } else {
+                    System.out.print(ch + " ");
+                }
+            }
+            System.out.println();
+        }
+        }
+         
+    }
+
+
+//44 : 2 pattern
+
+
+class alphabet22{
+    public static void main(String[] args) {
+        int n = 3;
+        for (int i = 1; i <= 2*n- 1; i++) {
+            int totalCols = (i <= n) ? i : (2 * n - i); 
+            char ch = (char) ('A' + totalCols - 1);
+    
+            for (int j = 1; j <= n; j++) {
+    
+                if (j <= n- totalCols) {
+                    System.out.print(" ");
+                }
+                else{
+                    System.out.print(ch + " ");
+                }
+            }
+
+            System.out.println();
+        }
+    }
+
+}
+    
+//45 assume string in odd length
+class oddlength{
+    public static void main(String[] args) {
+    int n =5;
+   for(int i =1;i<= n;i++)
+    {
+    int totalcols = 2* n -1;
+
+    for(int j=1;j<=totalcols;j++)
+  {
+    if (j==i || j == totalcols-i+1)
+    {
+        System.out.print(i);
+    }
+    else{
+        System.out.print(" ");
+    }
+ }
+System.out.println();
+}
+    }
+}
+
+
+
+
+//46 find the odd numbers in between in range
+
+class oddnum{
+    public static void main(String[] args) {
+      for(int i =2;i<15;i++)
+      {
+        if(i % 2 ==0)
+        {
+            System.out.print("");
+        }
+        else{
+            System.out.print(i + " ");
+        }
+      }
+    }
+}
+  
+//47 print the letters from 'A' to user input character without using strings
+
+class letter{
+    public static void main(String[] args) {
+       
+        for(char ch ='A';ch<='D';ch++)
+        {
+            System.out.print(ch + " ");
+        }
+    }
+}
+
+//  input f print
+ class letter2{
+    public static void main(String[] args) {
+        for(char ch ='A' ;ch <= 'F';ch++)
+        {
+            System.out.print(ch + " ");
+        }
+    }
+ }
+
+ //48 find the sum of given number and its  reverse number
+
+ class sumrev{
+    public static void main(String[] args) {
+        int num = 12345;
+        int orginalnum = 12345;
+        int rev =0;
+        int sum =0;
+        
+        while(num != 0)
+        {
+            int digit = num % 10;
+            rev = rev * 10 + digit;     //12345 + 54321
+            num = num /10;
+            
+        }
+        //System.out.println(orginalnum);
+        //System.out.println(rev);
+        sum = orginalnum + rev;
+
+        System.out.println("12345  + 54321" + " = " + sum);
+        
+    }
+ }
+
+ //2. input 543
+
+ class sumrev2{
+    public static void main(String[] args) {
+        int num = 543;
+        int orginalnum = 543;
+        int rev =0;
+        int sum =0;
+        for(int i = 0;i<num;i++)
+        {
+            int digit = num % 10;
+            rev = rev *10 + digit;
+            num = num/10;
+        }
+        sum = orginalnum + rev;
+        System.out.println("543 + 345  = " + sum);
+    }
+ }
+
+ //49 using recursion reverse the string such as 
+  //eg 1
+class revword{
+    public static String reverseWords(String[] words, int index) {
+        if (index < 0) {
+            return "";
+        }
+        return words[index] + " " + reverseWords(words, index - 1);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a sentence: ");
+        String input = sc.nextLine();
+        String[] words = input.trim().split("\\s+");
+        String reversed = reverseWords(words, words.length - 1).trim();
+        System.out.println("Reversed sentence: " + reversed);
+    }
+}
+//eg2
+
+class revword2{
+    public static String reverseWords(String[] words, int index) {
+        if (index < 0) {
+            return "";
+        }
+        return words[index] + " " + reverseWords(words, index - 1);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a sentence: ");
+        String input = sc.nextLine();
+        String[] words = input.trim().split("\\s+");
+        String reversed = reverseWords(words, words.length - 1).trim();
+        System.out.println("Reversed sentence: " + reversed);
+    }
+}
+//50 
+//input 234
+  class numtoword{
+    public static void main(String[] args) {
+    
+       Scanner scan = new Scanner(System.in);
+       System.out.println("Enter a number :");  
+
+       String[] one ={"" , " one " , " two " ," three " , " four " , " five " , " six " ," seven " ," eight " , " nine " , " ten " , " eleven " ," twelve " , " thirteen " , " fourteen " ,
+                      " fivteen " , " sixteen " ," seventeen "," eigtheen ", " nineteen " };
+
+        String[] ten = {"", "" ,"twenty "," thirty "," forty "," fivety "," sixty "," seventy "," eighty "," ninety "};
+    
+
+        int num = scan.nextInt();
+        
+        if(num == 0)
+        {
+            System.out.println("zero");
+        }
+        else{
+
+        if(num >= 100)
+        {
+            System.out.print( one[num/100] + " hundered ");
+            num = num %100;
+
+        }
+        if(num < 20)
+        {
+            System.out.print(one[num]);
+        }
+        else{
+            System.out.print(ten[num/10] + " " + one[num%10] );
+        }    
+    }
+} 
+ }
+
+
+//51. sort the elements in odd positions in descending order and ele
+//eg1
+class ascdes{
+    public static void main(String[] args) {
+        
+        int[] arr = {13, 2, 4, 15, 12, 10, 5};
+        int oddCount = (arr.length + 1) / 2;
+        int[] oddPos = new int[oddCount];
+        int oddIndex = 0;
+        for (int i = 0; i < arr.length; i += 2) {
+            oddPos[oddIndex++] = arr[i];
+        }  
+        //  even position 
+        int evenCount = arr.length / 2;
+        int[] evenPos = new int[evenCount];
+        int evenIndex = 0;
+        for (int i = 1; i < arr.length; i += 2) {
+            evenPos[evenIndex++] = arr[i];
+        }
+        
+        // Sort odd position 
+        for (int i = 0; i < oddPos.length - 1; i++) {
+            for (int j = 0; j < oddPos.length - 1 - i; j++) {
+                if (oddPos[j] < oddPos[j + 1]) {
+                    int temp = oddPos[j];
+                    oddPos[j] = oddPos[j + 1];
+                    oddPos[j + 1] = temp;
+                }
+            }
+        }
+        
+        // Sort even position in ascending 
+        for (int i = 0; i < evenPos.length - 1; i++) {
+            for (int j = 0; j < evenPos.length - 1 - i; j++) {
+                if (evenPos[j] > evenPos[j + 1]) {
+                    int temp = evenPos[j];
+                    evenPos[j] = evenPos[j + 1];
+                    evenPos[j + 1] = temp;
+                }
+            }
+        }
+        
+        // Merge sorted elements 
+        oddIndex = 0;
+        evenIndex = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (i % 2 == 0) { 
+                arr[i] = oddPos[oddIndex++];
+            } else {
+                arr[i] = evenPos[evenIndex++];
+            }
+        }
+        
+        // Print 
+        System.out.print("Sorted array: ");
+        for(int i=0;i<arr.length;i++)
+        {
+          System.out.print(arr[i] + " ");
+        }
+    }
+}
+
+//51 
+//eg2
+class ascdes2{
+    public static void main(String[] args) {
+        
+        int[] arr = {1,2,3,4,5,6,7,8,9};
+        int oddCount = (arr.length + 1) / 2;
+        int[] oddPos = new int[oddCount];
+        int oddIndex = 0;
+        for (int i = 0; i < arr.length; i += 2) {
+            oddPos[oddIndex++] = arr[i];
+        }  
+        //  even position 
+        int evenCount = arr.length / 2;
+        int[] evenPos = new int[evenCount];
+        int evenIndex = 0;
+        for (int i = 1; i < arr.length; i += 2) {
+            evenPos[evenIndex++] = arr[i];
+        }
+        
+        // Sort odd position 
+        for (int i = 0; i < oddPos.length - 1; i++) {
+            for (int j = 0; j < oddPos.length - 1 - i; j++) {
+                if (oddPos[j] < oddPos[j + 1]) {
+                    int temp = oddPos[j];
+                    oddPos[j] = oddPos[j + 1];
+                    oddPos[j + 1] = temp;
+                }
+            }
+        }
+        
+        // Sort even position in ascending 
+        for (int i = 0; i < evenPos.length - 1; i++) {
+            for (int j = 0; j < evenPos.length - 1 - i; j++) {
+                if (evenPos[j] > evenPos[j + 1]) {
+                    int temp = evenPos[j];
+                    evenPos[j] = evenPos[j + 1];
+                    evenPos[j + 1] = temp;
+                }
+            }
+        }
+        
+        // Merge sorted elements 
+        oddIndex = 0;
+        evenIndex = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (i % 2 == 0) { 
+                arr[i] = oddPos[oddIndex++];
+            } else {
+                arr[i] = evenPos[evenIndex++];
+            }
+        }
+        
+        // Print 
+        System.out.print("Sorted array: ");
+        for(int i=0;i<arr.length;i++)
+        {
+          System.out.print(arr[i] + " ");
+        }
+    }
+}
+
+
+
+//52 print the alphabet 'C' with the stars based o the given numbers
+
+class cpat{
+    public static void main(String[] args) {
+        int n=4;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                if( i == 0  || j == 0 )
+                {
+                    System.out.print("*");
+                }
+                else if(i == n-1)
+                    {
+                    System.out.print("*");
+                }
+                else{
+                    System.out.print(" ");
+                }
+                
+            }
+            System.out.println();
+        }
+    }
+}
+
+//53 pattern like a pyramid with numbers increased 1
+
+class pyramid10{
+    public static void main(String[] args) {
+        int n = 4;
+        int num=1;
+        for(int i =1;i<=n;i++)
+        {
+                for(int j=1;j<=n;j++)
+                {
+                    if(j <= n-i)
+                    {
+                        System.out.print(" ");
+                    }
+                    else{
+                    System.out.print(num +" ");
+                   num++;
+                    }
+                }
+            System.out.println();
+            
+
+        }
+        
         }
         
     }
+    
+
+
+//54 write a program to print the following pattern for the input number
+
+//input12345
+
+class oddlenpat{
+    public static void main(String[] args) {
+        String str = "12345";
+        int n = str.length();
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                if(j == i || j == n-1-i )
+                {
+                    System.out.print(str.charAt(j));
+                }
+                else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+//55 program to print the following pattern for the given input number
+
+class fourtoone
+{
+    public static void main(String[] args) {
+        int n = 5;
+        int length = 2 * n - 1; // 7x7 
+        int[][] matrix = new int[length][length];
+
+        int top = 0;
+        int bottom = length - 1;
+        int left = 0;
+        int right = length- 1;
+        int Val = n;
+
+        while (top <= bottom && left <= right) {
+            
+            for (int i = left; i <= right; i++) {
+                matrix[top][i] = Val;
+            }
+            top++;
+
+        
+            for (int i = top; i <= bottom; i++) {
+                matrix[i][right] = Val;
+            }
+            right--;
+
+       
+            for (int i = right; i >= left; i--) {
+                matrix[bottom][i] = Val;
+            }
+            bottom--;
+
+            
+            for (int i = bottom; i >= top; i--) {
+                matrix[i][left] = Val;
+            }
+            left++;
+
+            Val--; 
+        }
+
+        
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+            
+
+//56 print the all the substring of the given string without using strings
+
+class subst{
+    public static void main(String[] args) {
+        String input = "abc";
+        for(int start =0;start < input.length();start++)
+        {
+            String temp ="";
+            for(int end = start;end<input.length();end++)
+            {
+                temp = temp + input.charAt(end);
+                System.out.println(temp);
+            }
+        }
+    }
+    }
+
+
+   //57 print the numbers which are mismatched from two array
+  
+   class mismatched{
+    public static void main(String[] args) {
+        char[] arr1 = {'a','b','c','d','e','f','g','h','i'};
+        char[] arr2 ={'a','b','d','e','e','g','g','i','i'};
+        for(int i=0;i<arr1.length;i++)
+        {
+               if(arr1[i] != arr2[i])
+               {
+                System.out.print("" + arr1[i] + arr2[i]);
+               System.out.print(", ");  
+            }
+        }
+    }
+   }
+
+   //58 given s array of sum num digits 12,9 plus to sum print it
+   
+   class plussum{
+    public static void main(String[] args) {
+        int[] num1 = {9,2,8,1,3,5,6,7,3,1,1,6};
+        int[] num2 = {7,8,4,6,2,1,9,9,7};
+        int len1 = num1.length;
+        int len2 = num2.length;
+        int maxlen;
+        if(len1 > len2)
+        {
+            maxlen = len1;
+        }
+        else{
+            maxlen = len2;
+        }
+
+        maxlen = maxlen +1; // space 
+
+        int[]result = new int[maxlen];
+       int i = len1-1;
+       int j = len2-1;
+       int k = maxlen-1;
+       int carry = 0;
+
+       while(i >= 0 || j >= 0 || carry > 0)
+       {
+        int digits12 = 0;
+        int digits9 = 0;
+        if(i >= 0)
+        {
+            digits12= num1[i];
+        }
+        if(j >= 0)
+        {
+            digits9 = num2[j];
+        }
+     
+        int sum = digits12 + digits9 + carry;
+        result[k] = sum % 10;
+        carry = sum / 10;
+
+        i = i-1;
+        j = j-1;
+        k = k-1;
+       }
+       
+       //print it
+    System.out.println("sum of arrays :");
+    boolean started  =  false;
+    for(int x =0;x<result.length;x++)
+    {
+        if(result[x] != 0)
+        {
+            started = true;
+        }
+      if(started)
+      {
+        System.out.print(result[x] +" ");
+      }
+    }
+      if(!started)
+      {
+        System.out.print("0");
+      }
+      System.out.println();
+    }
+
+    }
+   
+
+   //59 write a program to print the below format
+
+
+class patlast{
+  public static void main(String[] args) {
+    
+        int rows = 2;   
+        int height = 3; 
+
+        for (int i = 0; i < rows; i++) {
+            System.out.println("+===+===+");
+            for (int j = 0; j< height; j++) {
+                System.out.println("|  |  |");
+            }
+        }
+        System.out.println("+===+===+"); 
+    }
+}
+
+
+//60 welcometozohocorporation
+
+
+
 
 

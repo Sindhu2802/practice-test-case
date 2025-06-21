@@ -1494,6 +1494,66 @@ class patlast{
 
 //60 welcometozohocorporation
 
+class wel60
+{
+    public static void main(String[]args)
+    {
+        Scanner java = new Scanner(System.in);
+        System.out.println("Enter the string: ");
+        String str = java.nextLine();
+        str = str.replaceAll(" ", "");
+
+        int ind = 0;
+        int size = (int)Math.ceil(Math.sqrt(str.length()));
+        char[][]mat = new char[size][size];
+        
+        for(int i = 0;i<mat.length && ind<str.length();i++)
+        {
+            for(int j = 0;j<mat[0].length && ind<str.length();j++)
+            {
+                mat[i][j] = str.charAt(ind++);
+                System.out.print(mat[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("Enter the word to search: ");
+        String word = java.nextLine();
+        
+        //for the row searchzohz
+
+        for(int i = 0;i<mat.length;i++)
+        {
+            StringBuilder rowchk = new StringBuilder();
+            for(int j = 0;j<mat[0].length;j++)
+           {
+                rowchk.append(mat[i][j]);
+            }
+            if(rowchk.toString().contains(word))
+            {
+                int pos = rowchk.indexOf(word);
+                System.out.println("The word present from ("+ i + ", " + pos +") to ("+ i + ", " + (pos + word.length() -1) + ") in the row");
+                break;
+            }
+        }
+
+        //for the column search
+        for(int j = 0;j<mat[0].length;j++)
+        {
+            StringBuilder colchk = new StringBuilder();
+            for(int i = 0;i<mat.length;i++)
+            {
+                colchk.append(mat[i][j]);
+            }
+            if(colchk.toString().contains(word))
+            {
+                int pos = colchk.indexOf(word);
+                System.out.println("The word present from (" + pos + ", " + j +") to (" + (pos + word.length() -1) + ", " + j + ") in the column");
+                break;
+            }
+        }
+    }
+}
 
 
 
